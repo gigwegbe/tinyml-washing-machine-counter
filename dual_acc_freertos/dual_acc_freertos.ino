@@ -44,9 +44,9 @@ void setup() {
     // verify connection
     Serial.println(accelgyro.testConnection() ? "MPU6050 connection successful" : "MPU6050 connection failed");
     Serial.println(accelgyro2.testConnection() ? "MPU6050 connection successful" : "MPU6050 connection failed");
-      
+//      
     xTaskCreate(acceTask,"accelerometer 1", 1000, NULL, 1, &Handle_aTask); 
-    xTaskCreate(acceTask2,"accelerometer 2", 1000, NULL, 2, &Handle_bTask);
+//    xTaskCreate(acceTask2,"accelerometer 2", 1000, NULL, 2, &Handle_bTask);
 
 // Start the RTOS, this function wiTerminal never return and wiTerminal schedule the tasks.
   vTaskStartScheduler();
