@@ -10,7 +10,7 @@
 MPU6050 mpu;
 Sd2Card card;
 
-static unsigned long data_collection_interval_ms = 6000;
+static unsigned long data_collection_interval_ms = 20000;
 static unsigned long last_interval_ms = 0;
 const int chipSelect = 2;
 
@@ -53,7 +53,7 @@ void loop()
 
   // open the file. note that only one file can be open at a time,
   // so you have to close this one before opening another.
-  File dataFile = SD.open("log012.txt", FILE_WRITE);
+  File dataFile = SD.open("1_log0.txt", FILE_WRITE);
 
   if (last_interval_ms < data_collection_interval_ms)
   {
@@ -76,13 +76,13 @@ void loop()
         dataFile.println(dataString);
         dataFile.close();
         // print to the serial port too:
-        Serial.println(dataString);
       }
       // if the file isn't open, pop up an error:
       else
       {
         Serial.println("error opening datalog.txt");
       }
+      Serial.println(dataString);
     }
   }
 }

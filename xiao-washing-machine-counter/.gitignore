@@ -3,3 +3,12 @@
 .vscode/c_cpp_properties.json
 .vscode/launch.json
 .vscode/ipch
+/src/m.cpps 
+/src/data_collection_review.cpps 
+/src/inference.cpp 
+/src/infer.cpps 
+lib/acewash-counter-v8.zip
+lib/acewash-counter-v8/
+lib/ei-acewash-counter-arduino-1.0.7_old.zip
+# src/data_collection.cpps
+src/m.cpp 
