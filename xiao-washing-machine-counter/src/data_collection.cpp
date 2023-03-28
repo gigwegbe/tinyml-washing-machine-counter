@@ -8,7 +8,7 @@
 
 MPU6050 mpu;
 
-
+static unsigned long data_collection_interval_ms = 0;
 static unsigned long last_interval_ms = 0;
 
 void setup() 
@@ -27,13 +27,14 @@ void setup()
 
 void loop()
 {
-  Vector normAccel = mpu.readNormalizeAccel();
-
-  if (millis() > last_interval_ms + INTERVAL_MS){
-  last_interval_ms = millis(); 
-  Serial.print(last_interval_ms); Serial.print("\t");
-  Serial.print(normAccel.XAxis); Serial.print("\t");
-  Serial.print(normAccel.YAxis); Serial.print("\t");
-  Serial.println(normAccel.ZAxis);
+  while(last_interval_ms < data_collection_interval_ms){
+        Vector normAccel = mpu.readNormalizeAccel();
+        if (millis() > last_interval_ms + INTERVAL_MS){
+            last_interval_ms = millis(); 
+            Serial.print(last_interval_ms); Serial.print("\t");
+            Serial.print(normAccel.XAxis); Serial.print("\t");
+            Serial.print(normAccel.YAxis); Serial.print("\t");
+            Serial.println(normAccel.ZAxis);
+      }
   }
 }
